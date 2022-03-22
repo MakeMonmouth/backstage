@@ -14,7 +14,7 @@ backend:
   #     - secret: ${BACKEND_SECRET}
   baseUrl: https://mmwbackstage.herokuapp.com
   listen:
-    port: 7007
+    port: ${PORT}
   csp:
     connect-src: ["'self'", 'http:', 'https:']
     # Content-Security-Policy directives follow the Helmet format: https://helmetjs.github.io/#reference
