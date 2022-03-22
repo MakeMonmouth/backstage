@@ -59,8 +59,12 @@ auth:
   # see https://backstage.io/docs/auth/ to learn about auth providers
   providers:
     github:
-      clientId: ${GITHUB_AUTH_CLIENT_ID}
-      clientSecret: ${GITHUB_AUTH_CLIENT_SECRET}
+      development:
+        clientId: ${GITHUB_AUTH_CLIENT_ID}
+        clientSecret: ${GITHUB_AUTH_CLIENT_SECRET}
+      production:
+        clientId: ${GITHUB_AUTH_CLIENT_ID}
+        clientSecret: ${GITHUB_AUTH_CLIENT_SECRET}
 
 scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
