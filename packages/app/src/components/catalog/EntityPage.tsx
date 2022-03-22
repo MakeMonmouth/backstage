@@ -67,6 +67,9 @@ import {
   RELATION_PART_OF,
   RELATION_PROVIDES_API,
 } from '@backstage/catalog-model';
+import {
+  EntityGrafanaAlertsCard,
+} from '@k-phoen/backstage-plugin-grafana';
 
 const cicdContent = (
   // This is an example of how you can implement your company's logic in entity page.
@@ -125,6 +128,11 @@ const overviewContent = (
       <EntityCatalogGraphCard variant="gridItem" height={400} />
     </Grid>
 
+     <Grid item md={6}>
+      {/* Grafana alert card start */}
+      <EntityGrafanaAlertsCard />
+      {/* Grafana alert card end */}
+    </Grid>
     <Grid item md={4} xs={12}>
       <EntityLinksCard />
     </Grid>
