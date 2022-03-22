@@ -70,6 +70,11 @@ import {
 import {
   EntityGrafanaAlertsCard,
 } from '@k-phoen/backstage-plugin-grafana';
+import {
+  EntityPrometheusAlertCard,  
+  EntityPrometheusGraphCard,
+  EntityPrometheusContent,
+} from '@roadiehq/backstage-plugin-prometheus';
 
 const cicdContent = (
   // This is an example of how you can implement your company's logic in entity page.
@@ -133,6 +138,9 @@ const overviewContent = (
       <EntityGrafanaAlertsCard />
       {/* Grafana alert card end */}
     </Grid>
+    <Grid item md={6}>
+      <EntityPrometheusAlertCard />
+    </Grid>
     <Grid item md={4} xs={12}>
       <EntityLinksCard />
     </Grid>
@@ -146,6 +154,10 @@ const serviceEntityPage = (
   <EntityLayout>
     <EntityLayout.Route path="/" title="Overview">
       {overviewContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/prometheus" title="Prometheus">
+      <EntityPrometheusContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
