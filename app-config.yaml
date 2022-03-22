@@ -43,6 +43,20 @@ proxy:
   '/test':
     target: 'https://example.com'
     changeOrigin: true
+  '/grafana/api':
+    # May be an internal DNS
+    target: ${GRAFANA_URI}
+    headers:
+      Authorization: Bearer ${GRAFANA_TOKEN}
+  '/prometheus/api':
+    # url to the api and path of your hosted prometheus instance
+    target: ${GRAFANA_PROMETHEUS_URI}
+    headers:
+      Authorization: ${GRAFANA_PROMETHEUS_TOKEN}
+
+grafana:
+  # Publicly accessible domain
+  domain: ${GRAFANA_URI}
 
 # Reference documentation http://backstage.io/docs/features/techdocs/configuration
 # Note: After experimenting with basic setup, use CI/CD to generate docs
@@ -70,3 +84,4 @@ scaffolder:
   # see https://backstage.io/docs/features/software-templates/configuration for software template options
 
 catalog:
+
