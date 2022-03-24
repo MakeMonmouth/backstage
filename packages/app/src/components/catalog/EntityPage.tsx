@@ -45,6 +45,8 @@ import {
   isGithubActionsAvailable,
   EntityGithubActionsContent,
 } from '@backstage/plugin-github-actions';
+import { EntityGithubPullRequestsContent } from '@roadiehq/backstage-plugin-github-pull-requests';
+import { EntityGithubPullRequestsOverviewCard } from '@roadiehq/backstage-plugin-github-pull-requests';
 import {
   EntityUserProfileCard,
   EntityGroupProfileCard,
@@ -72,9 +74,10 @@ import {
 } from '@k-phoen/backstage-plugin-grafana';
 import {
   EntityPrometheusAlertCard,  
-  EntityPrometheusGraphCard,
   EntityPrometheusContent,
 } from '@roadiehq/backstage-plugin-prometheus';
+import { EntitySentryContent, EntitySentryCard } from '@backstage/plugin-sentry';
+
 
 const cicdContent = (
   // This is an example of how you can implement your company's logic in entity page.
@@ -141,6 +144,12 @@ const overviewContent = (
     <Grid item md={6}>
       <EntityPrometheusAlertCard />
     </Grid>
+    <Grid item md={6}>
+       <EntitySentryCard />
+     </Grid>
+    <Grid item md={6}>
+      <EntityGithubPullRequestsOverviewCard />
+    </Grid>
     <Grid item md={4} xs={12}>
       <EntityLinksCard />
     </Grid>
@@ -160,8 +169,16 @@ const serviceEntityPage = (
       <EntityPrometheusContent />
     </EntityLayout.Route>
 
+    <EntityLayout.Route path="/sentry" title="Sentry">
+      <EntitySentryContent />
+    </EntityLayout.Route>
+
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
       {cicdContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/pull-requests" title="Pull Requests">
+      <EntityGithubPullRequestsContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/api" title="API">

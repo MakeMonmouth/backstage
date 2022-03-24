@@ -52,7 +52,14 @@ proxy:
     # url to the api and path of your hosted prometheus instance
     target: ${GRAFANA_PROMETHEUS_URI}
     headers:
-      Authorization: ${GRAFANA_PROMETHEUS_TOKEN}
+      Authorization: Basic ${GRAFANA_PROMETHEUS_BASE64_CREDS}
+  '/sentry/api':
+    target: https://sentry.io/api/
+    allowedMethods: [ 'GET' ]
+    headers:
+      Authorization: Bearer ${SENTRY_TOKEN}
+sentry:
+  organization: '${SENTRY_ORG}'
 
 grafana:
   # Publicly accessible domain
@@ -65,7 +72,7 @@ grafana:
 techdocs:
   builder: 'local' # Alternatives - 'external'
   generator:
-    runIn: 'docker' # Alternatives - 'local'
+    runIn: 'local' # Alternatives - 'local'
   publisher:
     type: 'local' # Alternatives - 'googleGcs' or 'awsS3'. Read documentation for using alternatives.
 

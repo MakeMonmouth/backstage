@@ -19,11 +19,12 @@ WORKDIR /app
 COPY yarn.lock package.json packages/backend/dist/skeleton.tar.gz ./
 RUN tar xzf skeleton.tar.gz && rm skeleton.tar.gz
 
-# install sqlite3 dependencies
+# install sqlite3 dependencies, python, and mkdocs
 RUN apt-get update && \
-    apt-get install -y libsqlite3-dev python3 cmake g++ && \
+    apt-get install -y libsqlite3-dev python3 cmake g++ python3 python3-pip && \
     rm -rf /var/lib/apt/lists/* && \
-    yarn config set python /usr/bin/python3
+    yarn config set python /usr/bin/python3 && \
+    pip3 install mkdocs-techdocs-core==0.2.2
 
 RUN yarn install --frozen-lockfile --production --network-timeout 300000 && rm -rf "$(yarn cache dir)"
 
