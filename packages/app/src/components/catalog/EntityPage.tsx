@@ -77,6 +77,7 @@ import {
   EntityPrometheusContent,
 } from '@roadiehq/backstage-plugin-prometheus';
 import { EntitySentryContent, EntitySentryCard } from '@backstage/plugin-sentry';
+import { EntityGithubInsightsContent } from '@roadiehq/backstage-plugin-github-insights';
 
 
 const cicdContent = (
@@ -179,6 +180,12 @@ const serviceEntityPage = (
 
     <EntityLayout.Route path="/pull-requests" title="Pull Requests">
       <EntityGithubPullRequestsContent />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route 
+      path="/code-insights"
+      title="Code Insights">
+      <EntityGithubInsightsContent />
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/api" title="API">

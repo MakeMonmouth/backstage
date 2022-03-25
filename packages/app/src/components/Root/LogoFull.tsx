@@ -18,7 +18,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core';
 
 const useStyles = makeStyles({
-  svg: {
+  img: {
     width: 'auto',
     height: 30,
   },
@@ -32,7 +32,7 @@ import MyCustomLogoFull from './logo/logo.png';
 const LogoFull = () => {
   const classes = useStyles();
 
-  return <img src={MyCustomLogoFull} />;
+  return <img className={classes.img} src={MyCustomLogoFull} />;
 };
 
 export default LogoFull;
