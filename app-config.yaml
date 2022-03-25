@@ -1,9 +1,9 @@
 app:
-  title: MMW Backstage
+  title: Make Monmouth
   baseUrl: https://mmwbackstage.herokuapp.com
 
 organization:
-  name: Prof Falken
+  name: Make Monmouth
 
 backend:
   # Used for enabling authentication, secret is shared by all backend plugins
