@@ -95,5 +95,13 @@ catalog:
     # (since 0.13.5) Scan all repositories for a catalog-info.yaml in the root of the default branch
     - type: github-discovery
       target: https://github.com/makemonmouth
+    - type: github-discovery
+      target: https://github.com/proffalken
+    - type: url
+      target: https://github.com/proffalken/backstage-terraform-module/blob/main/template.yaml
       rules:
-        - allow: [Component, API, Location, Template]
+        - allow: [Template]
+    - type: url
+      target: https://github.com/MakeMonmouth/backstage-templates/blob/main/template.yaml
+      rules:
+        - allow: [Template]
