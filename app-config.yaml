@@ -96,6 +96,8 @@ catalog:
     - type: github-discovery
       target: https://github.com/makemonmouth
     - type: github-discovery
+      target: https://github.com/modelrailwaysascode
+    - type: github-discovery
       target: https://github.com/proffalken
     - type: url
       target: https://github.com/proffalken/backstage-terraform-module/blob/main/template.yaml
