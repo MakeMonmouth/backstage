@@ -137,17 +137,6 @@ const overviewContent = (
       <EntityCatalogGraphCard variant="gridItem" height={400} />
     </Grid>
 
-     <Grid item md={6}>
-      {/* Grafana alert card start */}
-      <EntityGrafanaAlertsCard />
-      {/* Grafana alert card end */}
-    </Grid>
-    <Grid item md={6}>
-      <EntityPrometheusAlertCard />
-    </Grid>
-    <Grid item md={6}>
-       <EntitySentryCard />
-     </Grid>
     <Grid item md={6}>
       <EntityGithubPullRequestsOverviewCard />
     </Grid>
@@ -164,6 +153,20 @@ const serviceEntityPage = (
   <EntityLayout>
     <EntityLayout.Route path="/" title="Overview">
       {overviewContent}
+
+  <Grid container spacing={3} alignItems="stretch">
+     <Grid item md={6}>
+      {/* Grafana alert card start */}
+      <EntityGrafanaAlertsCard />
+      {/* Grafana alert card end */}
+    </Grid>
+    <Grid item md={6}>
+      <EntityPrometheusAlertCard />
+    </Grid>
+    <Grid item md={6}>
+       <EntitySentryCard />
+     </Grid>
+</Grid>
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/prometheus" title="Prometheus">
@@ -226,6 +229,43 @@ const websiteEntityPage = (
       {cicdContent}
     </EntityLayout.Route>
 
+    <EntityLayout.Route path="/pull-requests" title="Pull Requests">
+      <EntityGithubPullRequestsContent />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route 
+      path="/code-insights"
+      title="Code Insights">
+      <EntityGithubInsightsContent />
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/dependencies" title="Dependencies">
+      <Grid container spacing={3} alignItems="stretch">
+        <Grid item md={6}>
+          <EntityDependsOnComponentsCard variant="gridItem" />
+        </Grid>
+        <Grid item md={6}>
+          <EntityDependsOnResourcesCard variant="gridItem" />
+        </Grid>
+      </Grid>
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/docs" title="Docs">
+      <EntityTechdocsContent />
+    </EntityLayout.Route>
+  </EntityLayout>
+);
+
+const libraryEntityPage = (
+  <EntityLayout>
+    <EntityLayout.Route path="/" title="Overview">
+      {overviewContent}
+    </EntityLayout.Route>
+
+    <EntityLayout.Route path="/ci-cd" title="CI/CD">
+      {cicdContent}
+    </EntityLayout.Route>
+
     <EntityLayout.Route path="/dependencies" title="Dependencies">
       <Grid container spacing={3} alignItems="stretch">
         <Grid item md={6}>
@@ -270,6 +310,10 @@ const componentPage = (
 
     <EntitySwitch.Case if={isComponentType('website')}>
       {websiteEntityPage}
+    </EntitySwitch.Case>
+
+    <EntitySwitch.Case if={isComponentType('library')}>
+      {libraryEntityPage}
     </EntitySwitch.Case>
 
     <EntitySwitch.Case>{defaultEntityPage}</EntitySwitch.Case>
