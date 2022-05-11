@@ -136,7 +136,35 @@ const overviewContent = (
     <Grid item md={6} xs={12}>
       <EntityCatalogGraphCard variant="gridItem" height={400} />
     </Grid>
+     <Grid item md={6}>
+      {/* Grafana alert card start */}
+      <EntityGrafanaAlertsCard />
+      {/* Grafana alert card end */}
+    </Grid>
+    <Grid item md={6}>
+      <EntityPrometheusAlertCard />
+    </Grid>
+    <Grid item md={6}>
+       <EntitySentryCard />
+     </Grid>
+    <Grid item md={6}>
+      <EntityGithubPullRequestsOverviewCard />
+    </Grid>
+    <Grid item md={4} xs={12}>
+      <EntityLinksCard />
+    </Grid>
+    <Grid item md={8} xs={12}>
+      <EntityHasSubcomponentsCard variant="gridItem" />
+    </Grid>
+  </Grid>
+);
 
+const libraryOverviewContent = (
+  <Grid container spacing={3} alignItems="stretch">
+    {entityWarningContent}
+    <Grid item md={6}>
+      <EntityAboutCard variant="gridItem" />
+    </Grid>
     <Grid item md={6}>
       <EntityGithubPullRequestsOverviewCard />
     </Grid>
@@ -153,20 +181,6 @@ const serviceEntityPage = (
   <EntityLayout>
     <EntityLayout.Route path="/" title="Overview">
       {overviewContent}
-
-  <Grid container spacing={3} alignItems="stretch">
-     <Grid item md={6}>
-      {/* Grafana alert card start */}
-      <EntityGrafanaAlertsCard />
-      {/* Grafana alert card end */}
-    </Grid>
-    <Grid item md={6}>
-      <EntityPrometheusAlertCard />
-    </Grid>
-    <Grid item md={6}>
-       <EntitySentryCard />
-     </Grid>
-</Grid>
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/prometheus" title="Prometheus">
@@ -259,7 +273,7 @@ const websiteEntityPage = (
 const libraryEntityPage = (
   <EntityLayout>
     <EntityLayout.Route path="/" title="Overview">
-      {overviewContent}
+      {libraryOverviewContent}
     </EntityLayout.Route>
 
     <EntityLayout.Route path="/ci-cd" title="CI/CD">
